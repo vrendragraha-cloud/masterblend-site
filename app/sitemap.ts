@@ -1,10 +1,24 @@
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://masterblend.xyz';
+
   return [
-    { url: "https://masterblend.xyz", priority: 1 },
-    { url: "https://masterblend.xyz/about" },
-    { url: "https://masterblend.xyz/services" },
-    { url: "https://masterblend.xyz/contact" },
+    {
+      url: `${baseUrl}/`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${baseUrl}/services`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+    },
   ];
 }
