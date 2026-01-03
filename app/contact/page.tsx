@@ -5,7 +5,19 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { t, pick } from "@/components/i18n";
 import { useLang } from "@/components/LanguageProvider";
+function trackWhatsAppClick(location: string) {
+  if (typeof window === "undefined") return;
 
+  // guard kalau gtag belum ready
+  // @ts-ignore
+  if (!window.gtag) return;
+
+  // @ts-ignore
+  window.gtag("event", "contact_whatsapp_click", {
+    location,
+    page_path: window.location.pathname,
+  });
+}
 export default function ContactPage() {
   const { lang } = useLang();
 
@@ -47,14 +59,15 @@ export default function ContactPage() {
 
               <div>
                 <p className="text-neutral-500">WhatsApp</p>
-                <Link
-                  href={waLink}
-                  target="_blank"
-                  className="inline-block text-base font-medium text-neutral-900 underline decoration-orange-400 underline-offset-4 hover:opacity-90"
-                >
-                  +{wa}
-                </Link>
-              </div>
+<Link
+  href={waLink}
+  target="_blank"
+  onClick={() => trackWhatsAppClick("contact_direct_link")}
+  className="inline-block text-base font-medium text-neutral-900 underline decoration-orange-400 underline-offset-4 hover:opacity-90"
+>
+  +{wa}
+</Link>              
+</div>
 
               <p className="pt-2 text-xs text-neutral-500">
                 {pick(lang, t.contact.nda)}
@@ -107,14 +120,15 @@ export default function ContactPage() {
             </div>
 
             <div className="mt-7">
-              <Link
-                href={waLink}
-                target="_blank"
-                className="inline-flex items-center justify-center rounded-full bg-orange-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-orange-500"
-              >
-                {pick(lang, { en: "Chat on WhatsApp", id: "Chat via WhatsApp" })}
-              </Link>
-            </div>
+<Link
+  href={waLink}
+  target="_blank"
+  onClick={() => trackWhatsAppClick("contact_cta_button")}
+  className="inline-flex items-center justify-center rounded-full bg-orange-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-orange-500"
+>
+  {pick(lang, { en: "Chat on WhatsApp", id: "Chat via WhatsApp" })}
+</Link>            
+</div>
           </div>
         </div>
       </main>

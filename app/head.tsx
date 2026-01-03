@@ -1,17 +1,15 @@
 export default function Head() {
-    return (
-        <>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-3CYLHFFY1C" />
-            <script
-                dangerouslySetInnerHTML={{
-                    __html: `
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);}
-                        gtag('js', new Date());
-                        gtag('config', 'G-3CYLHFFY1C');
-                    `,
-                }}
-            />
-        </>
-    );
+  return (
+    <>
+      <title>MasterBlend — Tobacco & Flavour Consultant</title>
+      <meta
+        name="description"
+        content="MasterBlend membantu brand mengembangkan, mendokumentasikan, dan menskalakan produk tembakau & flavour secara konsisten dan siap produksi."
+      />
+      <meta property="og:title" content="MasterBlend — Tobacco & Flavour Consultant" />
+      <meta property="og:image" content="/og-image.jpg" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image" content="/og-image.jpg" />
+    </>
+  );
 }

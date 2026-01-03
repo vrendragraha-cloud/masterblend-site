@@ -29,7 +29,19 @@ export default function AboutPage() {
       img: "/about/about-3.jpg",
     },
   ];
+function trackWhatsAppClick(location: string) {
+  if (typeof window === "undefined") return;
 
+  // GA4 gtag safety check
+  // @ts-ignore
+  const gtagFn = window.gtag as undefined | ((...args: any[]) => void);
+  if (!gtagFn) return;
+
+  gtagFn("event", "contact_whatsapp_click", {
+    location, // contoh: "contact_card" / "cta_button"
+    page_path: window.location.pathname,
+  });
+}
   return (
     <>
       <SiteHeader />
@@ -53,7 +65,7 @@ export default function AboutPage() {
   {/* Image 1 */}
   <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
     <Image
-      src="/about/about-1.jpg"
+      src="/about/about-1.jpeg"
       alt="MasterBlend Lab Process"
       fill
       className="object-cover"
