@@ -26,8 +26,8 @@ export const t = {
     about: {
         title: { en: "About MasterBlend", id: "Tentang MasterBlend" },
         desc: {
-            en: "MasterBlend is an independent tobacco & flavour consultant who focuses on the classic taste of Indonesian cigarettes.",
-            id: "MasterBlend adalah konsultan independen tembakau & flavour dengan fokus pada rasa klasik Rokok Indonesia.",
+            en: "MasterBlend is an Indonesian independent tobacco & flavour consultant who focuses on the classic taste of Indonesian cigarettes.",
+            id: "MasterBlend adalah konsultan independen tembakau & flavour asal Indonesia dengan fokus pada rasa klasik Rokok Indonesia.",
         },
         card1: {
             title: { en: "Heritage Mindset", id: "Resep Turun Menurun" },
