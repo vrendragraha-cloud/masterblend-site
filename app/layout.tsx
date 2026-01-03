@@ -12,6 +12,34 @@ export const metadata: Metadata = {
   },
   description:
     "MasterBlend adalah konsultan independen tembakau & flavour Indonesia dengan fokus pada rasa klasik, formulasi, dan kesiapan produksi.",
+  openGraph: {
+    title: "MasterBlend — Tobacco & Flavour Consulting",
+    description:
+      "MasterBlend adalah konsultan independen tembakau & flavour Indonesia dengan fokus pada rasa klasik, formulasi, dan kesiapan produksi.",
+    url: "https://masterblend.xyz",
+    siteName: "MasterBlend",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "MasterBlend",
+      },
+    ],
+    locale: "id_ID",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MasterBlend — Tobacco & Flavour Consulting",
+    description:
+      "MasterBlend adalah konsultan independen tembakau & flavour Indonesia dengan fokus pada rasa klasik, formulasi, dan kesiapan produksi.",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -37,10 +65,7 @@ export default function RootLayout({
         </Script>
 
         {/* ✅ LANGUAGE PROVIDER */}
-        <LanguageProvider>
-          {children}
-        </LanguageProvider>
-
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );
