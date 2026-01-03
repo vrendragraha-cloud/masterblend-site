@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import SiteHeader from "@/components/SiteHeader";
-import SiteFooter from "@/components/SiteFooter";
 import { t, pick } from "@/components/i18n";
 import { useLang } from "@/components/LanguageProvider";
 
@@ -10,68 +8,100 @@ export default function AboutPage() {
   const { lang } = useLang();
 
   return (
-    <>
-      <SiteHeader />
-
-      <main className="mx-auto max-w-6xl px-5 py-16">
-        <h1 className="text-4xl font-semibold text-neutral-900 md:text-5xl">
+    <main className="mx-auto max-w-7xl px-6 lg:px-12 py-16">
+      {/* Header */}
+      <header className="mb-10">
+        <h1 className="text-3xl lg:text-5xl font-semibold tracking-tight text-neutral-900">
           {pick(lang, t.about.title)}
         </h1>
-
-        <p className="mt-6 max-w-3xl text-lg leading-relaxed text-neutral-600">
+        <p className="mt-5 text-neutral-700 leading-7 max-w-prose">
           {pick(lang, t.about.desc)}
         </p>
+      </header>
 
-        {/* ABOUT IMAGES (3) */}
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
-  {[
-    { src: "/about/about-1.jpeg", alt: "Heritage & formulation" },
-    { src: "/about/about-2.jpg", alt: "Documentation & SOP" },
-    { src: "/about/about-3.jpg", alt: "QC & sensory system" },
-  ].map((img) => (
-    <div
-      key={img.src}
-      className="relative overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm
-                 aspect-[3/4]"
-    >
-      <Image
-        src={img.src}
-        alt={img.alt}
-        fill
-        className="object-cover"
-        sizes="(min-width: 768px) 33vw, 100vw"
-      />
-    </div>
-  ))}
-</div>
-
-        {/* CARDS */}
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          <Card
+      {/* Two-column layout */}
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        {/* LEFT: Cards / points */}
+        <div className="space-y-6">
+          <AboutCard
             title={pick(lang, t.about.card1.title)}
             body={pick(lang, t.about.card1.body)}
           />
-          <Card
+          <AboutCard
             title={pick(lang, t.about.card2.title)}
             body={pick(lang, t.about.card2.body)}
           />
-          <Card
+          <AboutCard
             title={pick(lang, t.about.card3.title)}
             body={pick(lang, t.about.card3.body)}
           />
-        </div>
-      </main>
 
-      <SiteFooter />
-    </>
+          {/* Optional small note block */}
+          <div className="rounded-2xl border border-neutral-200 bg-white p-6">
+            <p className="text-sm text-neutral-600 leading-6">
+              {lang === "id"
+                ? "Jika dibutuhkan, kami bisa bekerja dengan NDA dan scope kerja yang jelas."
+                : "If needed, we can work under NDA with a clear scope of work."}
+            </p>
+          </div>
+        </div>
+
+        {/* RIGHT: Image grid */}
+        <div className="grid grid-cols-2 gap-4">
+          <Figure
+            src="/about/1.jpeg"
+            alt="MasterBlend activity 1"
+            className="col-span-1"
+            aspect="aspect-[3/4]"
+          />
+          <Figure
+            src="/about/2.jpg"
+            alt="MasterBlend activity 2"
+            className="col-span-1"
+            aspect="aspect-[3/4]"
+          />
+          <Figure
+            src="/about/3.jpg"
+            alt="MasterBlend activity 3"
+            className="col-span-2"
+            aspect="aspect-[16/10]"
+          />
+        </div>
+      </section>
+    </main>
   );
 }
 
-function Card({ title, body }: { title: string; body: string }) {
+function AboutCard({ title, body }: { title: string; body: string }) {
   return (
-    <div className="rounded-3xl border border-neutral-200 bg-white p-7 shadow-sm">
+    <div className="rounded-2xl border border-neutral-200 bg-white p-6">
       <h3 className="text-lg font-semibold text-neutral-900">{title}</h3>
-      <p className="mt-3 text-sm leading-relaxed text-neutral-600">{body}</p>
+      <p className="mt-3 text-neutral-700 leading-7">{body}</p>
+    </div>
+  );
+}
+
+function Figure({
+  src,
+  alt,
+  className = "",
+  aspect = "aspect-[3/4]",
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  aspect?: string;
+}) {
+  return (
+    <div className={`relative overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-100 ${aspect} ${className}`}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        className="object-cover"
+        priority={false}
+      />
     </div>
   );
 }
