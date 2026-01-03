@@ -1,5 +1,11 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
+
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
+
 import { t, pick } from "@/components/i18n";
 import { useLang } from "@/components/LanguageProvider";
 
@@ -25,45 +31,135 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="bg-neutral-100">
-      <section className="mx-auto max-w-4xl px-5 py-12">
-        <h1 className="text-3xl font-semibold text-neutral-900">
-          {pick(lang, t.about.title)}
-        </h1>
+    <>
+      <SiteHeader />
 
-        <p className="mt-6 text-neutral-700 leading-relaxed">
-          {pick(lang, t.about.desc)}
-        </p>
-
-        <div className="mt-10 space-y-6">
-          <div className="rounded-xl border border-neutral-200 bg-white p-5">
-            <h3 className="font-semibold text-neutral-900">
-              {pick(lang, t.about.card1.title)}
-            </h3>
-            <p className="mt-2 text-sm text-neutral-700">
-              {pick(lang, t.about.card1.body)}
+      <main className="mx-auto max-w-6xl px-5">
+        <section className="py-14">
+          <div className="rounded-3xl border border-neutral-200 bg-gradient-to-b from-white to-neutral-50 p-10 shadow-sm">
+            <p className="text-sm uppercase tracking-wider text-orange-600">
+              {pick(lang, { en: "About", id: "Tentang" })}
             </p>
-          </div>
 
-          <div className="rounded-xl border border-neutral-200 bg-white p-5">
-            <h3 className="font-semibold text-neutral-900">
-              {pick(lang, t.about.card2.title)}
-            </h3>
-            <p className="mt-2 text-sm text-neutral-700">
-              {pick(lang, t.about.card2.body)}
-            </p>
-          </div>
+            <h1 className="mt-3 text-4xl font-semibold leading-tight md:text-5xl">
+              {pick(lang, t.about.title)}
+            </h1>
 
-          <div className="rounded-xl border border-neutral-200 bg-white p-5">
-            <h3 className="font-semibold text-neutral-900">
-              {pick(lang, t.about.card3.title)}
-            </h3>
-            <p className="mt-2 text-sm text-neutral-700">
-              {pick(lang, t.about.card3.body)}
+            <p className="mt-4 max-w-3xl text-neutral-600 text-justify leading-relaxed">
+              {pick(lang, t.about.desc)}
             </p>
+
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+  {/* Image 1 */}
+  <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
+    <Image
+      src="/about/about-1.jpg"
+      alt="MasterBlend Lab Process"
+      fill
+      className="object-cover"
+      sizes="(min-width: 768px) 33vw, 100vw"
+    />
+  </div>
+
+  {/* Image 2 */}
+  <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
+    <Image
+      src="/about/about-2.jpg"
+      alt="MasterBlend Raw Material"
+      fill
+      className="object-cover"
+      sizes="(min-width: 768px) 33vw, 100vw"
+    />
+  </div>
+
+  {/* Image 3 */}
+  <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
+    <Image
+      src="/about/about-3.jpg"
+      alt="MasterBlend Blending Process"
+      fill
+      className="object-cover"
+      sizes="(min-width: 768px) 33vw, 100vw"
+    />
+  </div>
+</div>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/services"
+                className="rounded-full bg-orange-500 px-6 py-3 text-center font-medium text-white shadow-sm hover:opacity-95"
+              >
+                {pick(lang, { en: "See Services", id: "Lihat Layanan" })}
+              </Link>
+
+              <Link
+                href="/contact"
+                className="rounded-full border border-neutral-200 bg-white px-6 py-3 text-center font-medium text-neutral-900 hover:bg-neutral-50"
+              >
+                {pick(lang, { en: "Contact Us", id: "Hubungi Kami" })}
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+
+        <section className="py-10">
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="space-y-6">
+              {cards.map((c) => (
+                <div
+                  key={c.title}
+                  className="rounded-3xl border border-neutral-200 bg-white p-7 shadow-sm"
+                >
+                  <h3 className="text-xl font-semibold">{c.title}</h3>
+                  <p className="mt-2 text-neutral-600">{c.body}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid gap-6">
+              {cards.map((c) => (
+                <div
+                  key={c.img}
+                  className="relative overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-sm"
+                >
+                  <div className="relative h-[320px] w-full md:h-[340px]">
+                    <Image
+                      src={c.img}
+                      alt={c.title}
+                      fill
+                      priority
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-14">
+          <div className="rounded-3xl border border-neutral-200 bg-white p-10 shadow-sm">
+            <h2 className="text-3xl font-semibold">
+              {pick(lang, { en: "Want to talk about your product?", id: "Mau diskusi soal produk Anda?" })}
+            </h2>
+
+            <p className="mt-3 max-w-2xl text-neutral-600">
+              {pick(lang, { en: "We can help with profiling, SOP, and production handover.", id: "Kami bisa bantu profiling, SOP, dan serah-terima produksi." })}
+            </p>
+
+            <div className="mt-7">
+              <Link
+                href="/contact"
+                className="inline-block rounded-full bg-orange-500 px-6 py-3 font-medium text-white shadow-sm hover:opacity-95"
+              >
+                {pick(lang, { en: "Start Consultation", id: "Mulai Konsultasi" })}
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <SiteFooter />
+    </>
   );
 }
