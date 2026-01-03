@@ -11,11 +11,11 @@ export const metadata: Metadata = {
     template: "%s | MasterBlend",
   },
   description:
-    "MasterBlend adalah konsultan independen tembakau & flavour Indonesia dengan fokus pada rasa klasik, formulasi, dan kesiapan produksi.",
+    "Kami membantu perusahaan Rokok untuk mengembangkan dan memproduksi produk tembakau dan flavour dengan kualitas terbaik menggunakan formulasi legendaris dari sang Maestro Rokok Indonesia: Alm. M. Warsianto.",
   openGraph: {
     title: "MasterBlend — Tobacco & Flavour Consulting",
     description:
-      "MasterBlend adalah konsultan independen tembakau & flavour Indonesia dengan fokus pada rasa klasik, formulasi, dan kesiapan produksi.",
+      "Kami membantu perusahaan Rokok untuk mengembangkan dan memproduksi produk tembakau dan flavour dengan kualitas terbaik menggunakan formulasi legendaris dari sang Maestro Rokok Indonesia: Alm. M. Warsianto.",
     url: "https://masterblend.xyz",
     siteName: "MasterBlend",
     images: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MasterBlend — Tobacco & Flavour Consulting",
     description:
-      "MasterBlend adalah konsultan independen tembakau & flavour Indonesia dengan fokus pada rasa klasik, formulasi, dan kesiapan produksi.",
+      "Kami membantu perusahaan Rokok untuk mengembangkan dan memproduksi produk tembakau dan flavour dengan kualitas terbaik menggunakan formulasi legendaris dari sang Maestro Rokok Indonesia: Alm. M. Warsianto.",
     images: ["/og-image.jpg"],
   },
   robots: {
