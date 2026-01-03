@@ -7,101 +7,69 @@ import { useLang } from "@/components/LanguageProvider";
 export default function AboutPage() {
   const { lang } = useLang();
 
+  const cards = [
+    {
+      title: pick(lang, t.about.card1.title),
+      body: pick(lang, t.about.card1.body),
+    },
+    {
+      title: pick(lang, t.about.card2.title),
+      body: pick(lang, t.about.card2.body),
+    },
+    {
+      title: pick(lang, t.about.card3.title),
+      body: pick(lang, t.about.card3.body),
+    },
+  ];
+
   return (
-    <main className="mx-auto max-w-7xl px-6 lg:px-12 py-16">
-      {/* Header */}
-      <header className="mb-10">
-        <h1 className="text-3xl lg:text-5xl font-semibold tracking-tight text-neutral-900">
-          {pick(lang, t.about.title)}
-        </h1>
-        <p className="mt-5 text-neutral-700 leading-7 max-w-prose">
-          {pick(lang, t.about.desc)}
-        </p>
-      </header>
-
-      {/* Two-column layout */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        {/* LEFT: Cards / points */}
-        <div className="space-y-6">
-          <AboutCard
-            title={pick(lang, t.about.card1.title)}
-            body={pick(lang, t.about.card1.body)}
-          />
-          <AboutCard
-            title={pick(lang, t.about.card2.title)}
-            body={pick(lang, t.about.card2.body)}
-          />
-          <AboutCard
-            title={pick(lang, t.about.card3.title)}
-            body={pick(lang, t.about.card3.body)}
-          />
-
-          {/* Optional small note block */}
-          <div className="rounded-2xl border border-neutral-200 bg-white p-6">
-            <p className="text-sm text-neutral-600 leading-6">
-              {lang === "id"
-                ? "Jika dibutuhkan, kami bisa bekerja dengan NDA dan scope kerja yang jelas."
-                : "If needed, we can work under NDA with a clear scope of work."}
-            </p>
+    <main className="bg-neutral-100">
+      <section className="mx-auto max-w-7xl px-5 sm:px-8 py-12 sm:py-16">
+        <div className="grid gap-10 lg:grid-cols-12">
+          {/* LEFT – Vertical Images */}
+          <div className="lg:col-span-4">
+            <div className="flex flex-col gap-4">
+              {["/about/about-1.jpeg", "/about/about-2.jpg", "/about/about-3.jpg"].map(
+                (src, i) => (
+                  <div
+                    key={i}
+                    className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-200"
+                  >
+                    <Image
+                      src={src}
+                      alt={`MasterBlend activity ${i + 1}`}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                )
+              )}
+            </div>
           </div>
-        </div>
 
-        {/* RIGHT: Image grid */}
-        <div className="grid grid-cols-2 gap-4">
-          <Figure
-            src="/about/1.jpeg"
-            alt="MasterBlend activity 1"
-            className="col-span-1"
-            aspect="aspect-[3/4]"
-          />
-          <Figure
-            src="/about/2.jpg"
-            alt="MasterBlend activity 2"
-            className="col-span-1"
-            aspect="aspect-[3/4]"
-          />
-          <Figure
-            src="/about/3.jpg"
-            alt="MasterBlend activity 3"
-            className="col-span-2"
-            aspect="aspect-[16/10]"
-          />
-        </div>
-      </section>
-    </main>
-  );
-}
+          {/* RIGHT – Content */}
+          <div className="lg:col-span-8">
+            <div className="rounded-3xl border border-neutral-200 bg-white p-6 sm:p-10">
+              <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-neutral-900">
+                {pick(lang, t.about.title)}
+              </h1>
 
-function AboutCard({ title, body }: { title: string; body: string }) {
-  return (
-    <div className="rounded-2xl border border-neutral-200 bg-white p-6">
-      <h3 className="text-lg font-semibold text-neutral-900">{title}</h3>
-      <p className="mt-3 text-neutral-700 leading-7">{body}</p>
-    </div>
-  );
-}
+              <p className="mt-6 text-neutral-700 leading-relaxed text-[15px] sm:text-base">
+                {pick(lang, t.about.desc)}
+              </p>
 
-function Figure({
-  src,
-  alt,
-  className = "",
-  aspect = "aspect-[3/4]",
-}: {
-  src: string;
-  alt: string;
-  className?: string;
-  aspect?: string;
-}) {
-  return (
-    <div className={`relative overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-100 ${aspect} ${className}`}>
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        sizes="(max-width: 1024px) 100vw, 50vw"
-        className="object-cover"
-        priority={false}
-      />
-    </div>
-  );
-}
+              {/* Value cards */}
+              <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                {cards.map((card, idx) => (
+                  <div
+                    key={idx}
+                    className="rounded-2xl border border-neutral-200 bg-neutral-50 p-5"
+                  >
+                    <h3 className="text-base font-semibold text-neutral-900">
+                      {card.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-neutral-700">
+                      {card.body}
+                    </p>
+                  </div>
+                ))}
