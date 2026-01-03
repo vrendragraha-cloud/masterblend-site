@@ -6,6 +6,24 @@ import { useLang } from "@/components/LanguageProvider";
 export default function AboutPage() {
   const { lang } = useLang();
 
+  const cards = [
+    {
+      title: pick(lang, t.about.card1.title),
+      body: pick(lang, t.about.card1.body),
+      img: "/about/about-1.jpeg",
+    },
+    {
+      title: pick(lang, t.about.card2.title),
+      body: pick(lang, t.about.card2.body),
+      img: "/about/about-2.jpg",
+    },
+    {
+      title: pick(lang, t.about.card3.title),
+      body: pick(lang, t.about.card3.body),
+      img: "/about/about-3.jpg",
+    },
+  ];
+
   return (
     <main className="bg-neutral-100">
       <section className="mx-auto max-w-4xl px-5 py-12">
