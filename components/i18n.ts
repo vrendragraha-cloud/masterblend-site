@@ -12,7 +12,7 @@ export const t = {
         primaryCta: { en: "Contact Us", id: "Hubungi Kami" },
         secondaryCta: { en: "Our Services", id: "Layanan Kami" },
         stat1: { label: { en: "Ready to Blend Tobacco", id: "Tembakau Siap Giling" }, value: { en: "Mild, Bold, Regular, Flavoured Klik Mild, Flavoured Klik Bold, SKT and White Cigarettes", id: "Mild, Bold, Regular, Klik Mild Rasa, Klik Bold Rasa, SKT dan Rokok Putih." } },
-        stat2: { label: { en: "Tobacco & Clove", id: "Tembakau dan Cengkeh" }, value: { en: "High Quality Tobacco from Madura, Pakpi, Lombok, Bojonegoro, Weleri, Paiton Beringin and Ambon Clove", id: "Produk berkualitas dari Madura, Pakpi, Lombok, Bojonegoro, Weleri, Paiton Beringin dan Cengkeh Ambon." } },
+        stat2: { label: { en: "Ready to Use Tobacco & Clove", id: "Tembakau dan Cengkeh Siap Pakai" }, value: { en: "High Quality Tobaccco and Clove from Indonesia and all over the world", id: "Produk Tembakau dan Cengkeh berkualitas dari Berbagai Area Seluruh Indonesia dan Dunia." } },
         stat3: { label: { en: "Service", id: "Jasa" }, value: { en: "Providing Consultation and Support Services", id: "Memberikan Konsultasi dan Pendampingan" } },
         sectionWhatWeDo: { en: "What We Do", id: "Apa yang Kami Kerjakan" },
         sectionCtaTitle: { en: "Ready to standardise your product?", id: "Siap standarisasi produk Anda?" },

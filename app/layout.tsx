@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MasterBlend — Tobacco & Flavour Consulting",
     description:
-      "Kami membantu perusahaan Rokok untuk mengembangkan dan memproduksi produk tembakau dan flavour dengan kualitas terbaik menggunakan formulasi legendaris dari sang Maestro Rokok Indonesia: Alm. M. Warsianto.",
+      "Kami membantu perusahaan Rokok untuk mengembangkan dan memproduksi produk tembakau dan flavour dengan kualitas terbaik menggunakan formulasi legendaris dari sang Maestro Rokok Indonesia: Alm. M. Warsianto-.",
     images: ["/og-image.jpg"],
   },
   robots: {

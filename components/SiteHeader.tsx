@@ -11,30 +11,31 @@ export default function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   const nav = [
-    { href: "/", label: pick(lang, { en: "Home", id: "Beranda" }) },
-    { href: "/about", label: pick(lang, { en: "About Us", id: "Tentang" }) },
-    { href: "/services", label: pick(lang, { en: "Services", id: "Layanan" }) },
-    { href: "/contact", label: pick(lang, { en: "Contact", id: "Kontak" }) },
+    { href: "/", label: pick(lang, { id: "Beranda", en: "Home" }) },
+    { href: "/about", label: pick(lang, { id: "Tentang", en: "About" }) },
+    { href: "/muhammad-warsianto", label: pick(lang, { id: "M. Warsianto", en: "M. Warsianto" }) },
+    { href: "/services", label: pick(lang, { id: "Layanan", en: "Services" }) },
+    { href: "/contact", label: pick(lang, { id: "Kontak", en: "Contact" }) },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-zinc-900 text-white border-b border-zinc-800">
+    <header className="sticky top-0 z-50 border-b border-zinc-800 bg-zinc-900 text-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
         <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
           <img
             src="/brand/masterblend_wordmark_dark.svg"
             alt="MasterBlend"
-            className="h-20 md:h-25 w-auto"
+            className="h-20 w-auto md:h-24"
           />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-8 md:flex text-base font-medium text-white/90 tracking-wide">
+        <nav className="hidden items-center gap-6 text-base font-medium tracking-wide text-white/90 md:flex">
           {nav.map((n) => (
             <Link
               key={n.href}
               href={n.href}
-              className="hover:text-orange-300 transition"
+              className="whitespace-nowrap rounded-full px-2 py-1 transition hover:text-orange-300"
             >
               {n.label}
             </Link>
@@ -47,7 +48,7 @@ export default function SiteHeader() {
           {/* Desktop CTA */}
           <Link
             href="/contact"
-            className="hidden md:inline-flex rounded-full bg-orange-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:opacity-95"
+            className="hidden rounded-full bg-orange-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:opacity-95 md:inline-flex"
           >
             {pick(lang, { en: "Get in touch", id: "Hubungi" })}
           </Link>
@@ -66,7 +67,7 @@ export default function SiteHeader() {
 
       {/* Mobile dropdown */}
       {open && (
-        <div className="md:hidden border-t border-zinc-800 bg-zinc-900">
+        <div className="border-t border-zinc-800 bg-zinc-900 md:hidden">
           <div className="mx-auto max-w-6xl px-5 py-4">
             <div className="flex flex-col gap-3 text-base font-medium text-white/90">
               {nav.map((n) => (
@@ -74,7 +75,7 @@ export default function SiteHeader() {
                   key={n.href}
                   href={n.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-xl px-3 py-2 hover:bg-zinc-800 hover:text-orange-300 transition"
+                  className="rounded-xl px-3 py-2 transition hover:bg-zinc-800 hover:text-orange-300"
                 >
                   {n.label}
                 </Link>
