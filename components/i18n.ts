@@ -83,8 +83,8 @@ export const t = {
     {
       title: { en: "Ready to Use Products", id: "Produk Siap Pakai" },
       points: {
-        en: ["Ready to Blend Tobacco", "Ready to Use Flavour & Casing", "Ready to Roll 100g Tobacco"],
-        id: ["Tembakau Siap Giling (TSG)", "Flavour dan Casing Siap Pakai", "Tembakau 100g Siap Giling"],
+        en: ["Ready to Blend Tobacco (TSG) -> Most Popular", "Flavour, Casing and Topping(Compound)", "Ready to Roll 100g Tobacco"],
+        id: ["Tembakau Siap Giling (TSG) -> Paling Diminati", "Saos, Casing dan Topping (Kompon)", "Tembakau Siap Giling Dalam Kemasan 100g"],
       },
     },
     {
