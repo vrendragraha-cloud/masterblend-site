@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next"
 
+import { Analytics } from "@vercel/analytics/react";
 import { LanguageProvider } from "@/components/LanguageProvider";
 
 export const metadata: Metadata = {
@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     template: "%s | MasterBlend",
   },
   description:
-    "Kami membantu perusahaan Rokok untuk mengembangkan dan memproduksi produk tembakau dan flavour dengan kualitas terbaik menggunakan formulasi legendaris dari sang Maestro Rokok Indonesia: Alm. M. Warsianto.",
+    "Kami membantu perusahaan rokok mengembangkan dan memproduksi produk tembakau dan flavour melalui pendekatan blending, formulasi, QC, dan dokumentasi proses berbasis legacy Maestro Rokok Indonesia, Alm. Muhammad Warsianto.",
   openGraph: {
     title: "MasterBlend — Tobacco & Flavour Consulting",
     description:
-      "Kami membantu perusahaan Rokok untuk mengembangkan dan memproduksi produk tembakau dan flavour dengan kualitas terbaik menggunakan formulasi legendaris dari sang Maestro Rokok Indonesia: Alm. M. Warsianto.",
+      "Konsultan tembakau dan flavour dengan pendekatan profesional dalam blending, QC, dan standardisasi produksi berbasis legacy.",
     url: "https://masterblend.xyz",
     siteName: "MasterBlend",
     images: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MasterBlend — Tobacco & Flavour Consulting",
     description:
-      "Kami membantu perusahaan Rokok untuk mengembangkan dan memproduksi produk tembakau dan flavour dengan kualitas terbaik menggunakan formulasi legendaris dari sang Maestro Rokok Indonesia: Alm. M. Warsianto-.",
+      "Pendekatan profesional dalam blending dan formulasi tembakau berbasis legacy dan proses.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -50,7 +50,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      <body>
+      <body className="antialiased">
         {/* GA4 */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-3CYLHFFY1C"
@@ -61,12 +61,17 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-3CYLHFFY1C');
+            gtag('config', 'G-3CYLHFFY1C', {
+              anonymize_ip: true,
+            });
           `}
         </Script>
 
-        {/* ✅ LANGUAGE PROVIDER */}
+        {/* Language Provider */}
         <LanguageProvider>{children}</LanguageProvider>
+
+        {/* Vercel Analytics (Production Only) */}
+        <Analytics />
       </body>
     </html>
   );
